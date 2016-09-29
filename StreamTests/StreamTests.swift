@@ -8,6 +8,8 @@
 
 import XCTest
 
+import ExecutionContext
+import Future
 @testable import Stream
 
 class StreamTests: XCTestCase {
@@ -23,19 +25,42 @@ class StreamTests: XCTestCase {
     }
     
     func testExample() {
-        let test = RawReadableTest()
-        let w = RawWritableTest()
+        //f123()
         
-        test.pipe(writable: w)
+        //let test = RawReadableTest()
+        File.open(path: "/etc/passwd", mode: .readonly).flatMap { passwd in
+            passwd.readStream().drain()
+        }.flatMap { data in
+            String(bytes: data, encoding: .utf8)
+        }.onSuccess { strdata in
+            print(strdata)
+        }
+        
+        /*future(context: main) {
+            File.open (path: "/etc/passwd", mode: .readonly).readStream()
+            }.flatMap { passwd in
+                passwd.drain()
+            }.flatMap { data in
+                String(bytes: data, encoding: .utf8)
+            }.onSuccess { strdata in
+                print(strdata)
+        }*/
+        let w = RawWritableTest()
+        /*File.createReadStream(filename: "/etc/passwd").onSuccess { s in
+            s.pipe(writable: w)
+        }*/
+        
+        //test.pipe(writable: w)
+        
         
         let expectation = self.expectation(description: "some")
-        test.drain().onSuccess { result in
+        /*test.drain().onSuccess { result in
             print(result)
             XCTAssertEqual(result, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
             //expectation.fulfill()
-        }
+        }*/
         
-        self.waitForExpectations(timeout: 20, handler: nil)
+        self.waitForExpectations(timeout: 20000, handler: nil)
     }
     
     func testPerformanceExample() {

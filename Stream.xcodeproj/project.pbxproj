@@ -32,6 +32,8 @@
 		6512184A1CDE685300D3C387 /* WritableEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651218491CDE685300D3C387 /* WritableEvents.swift */; };
 		6512184C1CE2725600D3C387 /* Duplex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6512184B1CE2725600D3C387 /* Duplex.swift */; };
 		6512184E1CE2729E00D3C387 /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6512184D1CE2729E00D3C387 /* Transform.swift */; };
+		655D09021D9AA1860032E904 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655D09011D9AA1860032E904 /* File.swift */; };
+		655D09041D9B12C30032E904 /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655D09031D9B12C30032E904 /* Dispatch.swift */; };
 		65FD8F7A1CDC90E00046D5D6 /* Stream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65FD8F6F1CDC90E00046D5D6 /* Stream.framework */; };
 		65FD8F7F1CDC90E00046D5D6 /* StreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FD8F7E1CDC90E00046D5D6 /* StreamTests.swift */; };
 		65FD8F8A1CDC910F0046D5D6 /* Readable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FD8F891CDC910F0046D5D6 /* Readable.swift */; };
@@ -150,6 +152,8 @@
 		651290C41CDC92F800D3C387 /* Result.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Result.framework.dSYM; sourceTree = "<group>"; };
 		651290C51CDC92F800D3C387 /* RunLoop.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RunLoop.framework; sourceTree = "<group>"; };
 		651290C61CDC92F800D3C387 /* RunLoop.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = RunLoop.framework.dSYM; sourceTree = "<group>"; };
+		655D09011D9AA1860032E904 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		655D09031D9B12C30032E904 /* Dispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
 		65FD8F6F1CDC90E00046D5D6 /* Stream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Stream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65FD8F741CDC90E00046D5D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65FD8F791CDC90E00046D5D6 /* StreamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StreamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -336,6 +340,8 @@
 				651218341CDCB4B000D3C387 /* Buffer.swift */,
 				6512184B1CE2725600D3C387 /* Duplex.swift */,
 				6512184D1CE2729E00D3C387 /* Transform.swift */,
+				655D09011D9AA1860032E904 /* File.swift */,
+				655D09031D9B12C30032E904 /* Dispatch.swift */,
 			);
 			path = Stream;
 			sourceTree = "<group>";
@@ -464,6 +470,8 @@
 				6512184A1CDE685300D3C387 /* WritableEvents.swift in Sources */,
 				6512184C1CE2725600D3C387 /* Duplex.swift in Sources */,
 				6512184E1CE2729E00D3C387 /* Transform.swift in Sources */,
+				655D09041D9B12C30032E904 /* Dispatch.swift in Sources */,
+				655D09021D9AA1860032E904 /* File.swift in Sources */,
 				651218371CDCF15C00D3C387 /* ReadableEvents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

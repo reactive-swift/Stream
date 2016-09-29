@@ -229,7 +229,6 @@ public extension Readable where InChunk : Creatable & BufferProtocol {
         var buffer = InChunk()
         
         let dataOff = self.on(.data).react { chunk in
-            print(chunk.length)
             buffer.write(buffer: chunk)
         }
         
@@ -280,8 +279,21 @@ public class RawReadableSpi : ReadableSpiBase<UInt8, [UInt8]> {
 public class StringReadableSpi : ReadableSpiBase<String, String> {
 }
 
-public protocol RawReadable : Readable {
+public protocol RawReadableProtocol : Readable {
     associatedtype ReadableSpi : RawReadableSpi
+}
+
+public class RawReadable : RawReadableProtocol {
+    public typealias ReadableSpi = RawReadableSpi
+    
+    public let _rimpl: ReadableImpl<RawReadableSpi>
+    public let dispatcher:EventDispatcher = EventDispatcher()
+    public var context: ExecutionContextProtocol
+    
+    public init(context: ExecutionContextProtocol, spi:RawReadableSpi, highWatermark:Int? = nil) {
+        self.context = context
+        self._rimpl = ReadableImpl(spi: spi, dispatcher: dispatcher, context: context, highWatermark: highWatermark)
+    }
 }
 
 public protocol StringReadable : Readable {
@@ -317,7 +329,7 @@ func f() {
     let aa = RawReadableSpi()
 }
 
-public class RawReadableTest: RawReadable {
+/*public class RawReadableTest: RawReadable {
     public typealias ReadableSpi = RawReadableSpiTest
     
     public let _rimpl: ReadableImpl<RawReadableSpiTest>
@@ -327,7 +339,7 @@ public class RawReadableTest: RawReadable {
     public init() {
         self._rimpl = ReadableImpl(spi: RawReadableSpiTest(), dispatcher: dispatcher, context: context, highWatermark: 2)
     }
-}
+}*/
 
 /*class RawReadableTest : RawReadable {
     typealias ReadableSpi = RawReadableSpi
@@ -341,39 +353,3 @@ public class RawReadableTest: RawReadable {
         return []
     }
 }*/
-
-import Foundation
-
-/*protocol Test {
-    associatedtype A : ErrorProtocol
-    
-    var ttt:Self {get}
-}
-
-class T1: Test {
-    typealias A = CommonRuntimeError
-    
-    let ttt:Test = T1()
-}*/
-
-func ff() {
-    let rrt = RawReadableTest()
-    
-    let _ = rrt.on(.data).react { bytes in
-        
-    }
-    
-    let _ = rrt.on(.end).react {
-        
-    }
-    
-    let _ = rrt.on(.close).react {
-        
-    }
-    
-    rrt.drain().flatMap { buff in
-        String(bytes: buff, encoding: String.Encoding.utf8)
-    }.onSuccess { string in
-        print(string)
-    }
-}
