@@ -38,7 +38,7 @@ public protocol StreamEventEmitterProtocol : EventEmitter {
 }
 
 public extension StreamEventEmitterProtocol {
-    func on<E : Event>(_ groupedEvent: StreamEventGroup<E>) -> EventConveyor<E.Payload> {
+    func on<E : Event>(_ groupedEvent: StreamEventGroup<E>) -> SignalStream<E.Payload> {
         return self.on(groupedEvent.event)
     }
     

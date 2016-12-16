@@ -53,7 +53,7 @@ public struct ReadableEventGroup<E : Event, Payload> {
 }
 
 public extension ReadableEventEmitterProtocol {
-    public func on<E : Event>(_ groupedEvent: ReadableEventGroup<E, InChunk>) -> EventConveyor<E.Payload> {
+    public func on<E : Event>(_ groupedEvent: ReadableEventGroup<E, InChunk>) -> SignalStream<E.Payload> {
         return self.on(groupedEvent.event)
     }
     
