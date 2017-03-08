@@ -59,7 +59,7 @@ public struct WritableEventGroup<E : Event> {
 }
 
 public extension WritableEventEmitterProtocol {
-    public func on<E : Event>(_ groupedEvent: WritableEventGroup<E>) -> EventConveyor<E.Payload> {
+    public func on<E : Event>(_ groupedEvent: WritableEventGroup<E>) -> SignalStream<E.Payload> {
         return self.on(groupedEvent.event)
     }
     
