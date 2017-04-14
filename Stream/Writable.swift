@@ -128,7 +128,7 @@ public class WritableImpl<Spi: WritableSpiProtocol> : WritableEventEmitterProtoc
             
             let dataOff = r.on(.data).settle(in: self.context).react { chunk in
                 //maybe we should handle the future result??
-                self._write(data: chunk)
+                let _ = self._write(data: chunk)
             }
             
             let errorOff = r.on(.error).settle(in: self.context).react { e in
@@ -139,7 +139,7 @@ public class WritableImpl<Spi: WritableSpiProtocol> : WritableEventEmitterProtoc
             }
             
             let endOff:SafeTask? = !end ? nil : r.on(.end).settle(in: self.context).react {
-                self._end()
+                let _ = self._end()
             }
             
             self._pipe = PipeConnection(readable: r, dataOff: dataOff, errorOff:errorOff, endOff:endOff)

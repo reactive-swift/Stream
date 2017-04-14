@@ -160,7 +160,7 @@ public extension Readable {
             self.context.execute {
                 if newValue && self._rimpl._flow == nil {
                     self._rimpl._flow = self.on(.readable).react {
-                        self.read()
+                        let _ = self.read()
                     }
                 } else if !newValue && self._rimpl._flow != nil {
                     self._rimpl._flow?()
@@ -239,7 +239,7 @@ public extension Readable where InChunk : Creatable & BufferProtocol {
         let readableOff = self.on(.readable).react {
             //if we are not paused this one whould be called automatically
             if self.paused {
-                self.read()
+                let _ = self.read()
             }
         }
         
@@ -318,7 +318,7 @@ public class RawReadableSpiTest : RawReadableSpi {
             }
             
             if self.data?.isEmpty ?? false {
-                self._push(nil)
+                let _ = self._push(nil)
                 self.data = nil
             }
         }
@@ -326,7 +326,7 @@ public class RawReadableSpiTest : RawReadableSpi {
 }
 
 func f() {
-    let aa = RawReadableSpi()
+    let _ = RawReadableSpi()
 }
 
 /*public class RawReadableTest: RawReadable {
